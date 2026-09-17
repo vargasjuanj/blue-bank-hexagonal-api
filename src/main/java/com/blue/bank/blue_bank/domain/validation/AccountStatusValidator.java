@@ -1,0 +1,15 @@
+package com.blue.bank.blue_bank.domain.validation;
+import com.blue.bank.blue_bank.domain.exception.AccountNotActiveException;
+import com.blue.bank.blue_bank.domain.model.account.AccountStatus;
+import com.blue.bank.blue_bank.domain.model.transaction.TransferContext;
+public class AccountStatusValidator implements TransferValidator{
+    @Override
+    public void validate(TransferContext ctx) {
+        if (ctx.from().getStatus() != AccountStatus.ACTIVE) {
+            throw new AccountNotActiveException(ctx.from().getId(), ctx.from().getStatus().name());
+        }
+        if (ctx.to().getStatus() != AccountStatus.ACTIVE) {
+            throw new AccountNotActiveException(ctx.to().getId(), ctx.from().getStatus().name());
+        }
+    }
+}
