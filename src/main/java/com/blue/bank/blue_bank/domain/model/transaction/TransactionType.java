@@ -1,0 +1,6 @@
+package com.blue.bank.blue_bank.domain.model.transaction;
+public enum TransactionType {
+    DEPOSIT,
+    WITHDRAWAL,
+    TRANSFER
+}
